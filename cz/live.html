@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Event - Prostějov psí kusy</title>
+  <style>
+    /* Basic reset / base styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: #222;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      height: 60px;
+    }
+    nav ul {
+      list-style-type: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+    nav li {
+      display: inline-block;
+    }
+    nav a {
+      text-decoration: none;
+      color: #ddd;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+
+    /* Container with fade-in animation */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+
+      /* Fade-in animation setup */
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Flex layout for image + text side by side */
+    .content-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    }
+
+    /* Headings */
+    h1 {
+      margin-top: 0;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    /* Image styling: square, rounded edges, hover scale */
+    .event-image {
+      width: 400px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #333;
+
+      /* Hover scale animation */
+      transition: transform 0.3s ease;
+    }
+    .event-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Paragraph styling */
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive tweak: on smaller screens, stack items */
+    @media (max-width: 600px) {
+      .content-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+      .event-image {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Simple Nav Bar linking back to main site -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Domov</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Prostějov psí kusy Live Event</h1>
+    
+    <div class="content-flex">
+      <!-- Square image with rounded corners -->
+      <img
+        class="event-image"
+        src="https://lh3.googleusercontent.com/-ZWBmcKTFw3o/Z8Bxuqy2W9I/AAAAAAAAAAo/0zqFPmZL-0MgCAiLGrt69yjAJeXUk1cmACLQBGAsYHg/s16383-fcrop64=1,00000000ffffc571-no/2025-02-27.png"
+        alt="Prostějov psí kusy Live Event Image"
+      />
+
+      <div>
+        <p>
+          Přidejte se k nám na vydání nového hudebního alba Prostějovské Baddies – živě na 
+          Prostějov psí kusy! Tato událost bude obsahovat zcela nové kompozice a energii 
+          představení, která si nechcete nechat ujít.
+        </p>
+        <p>
+          Annie Zwilling a další místní talenty se spojí, aby dodali a 
+          jedinečný hudební zážitek. Pořad slibuje svěží materiál, živý 
+          představení a pulzující atmosféra odrážející ducha Prostějova.
+        </p>
+        <p>
+          Ať už jste dlouholetý fanoušek nebo prostějovskou hudební scénu teprve objevujete, 
+          toto je událost, které se máme zúčastnit. Nemůžeme se dočkat, až vás tam uvidíme!
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

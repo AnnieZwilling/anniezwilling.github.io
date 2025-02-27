@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annie Zwilling - Official Website</title>
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background-color: #222;
+      padding: 0 20px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav li a:hover {
+      color: #fff;
+    }
+    
+    /* Main Container with Fade-In Animation */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Flex Layout for Text and Image Side-by-Side */
+    .content-flex {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .text-content {
+      flex: 1;
+    }
+    
+    /* Image Styling: Square (with a little extra width), Rounded Edges, Hover Scale */
+    .event-image {
+      width: 310px; /* Increased width by 10px */
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 2px solid #333;
+      transition: transform 0.3s ease;
+    }
+    .event-image:hover {
+      transform: scale(1.05);
+    }
+    
+    /* Special Info Section for Prostějov Visitors */
+    #live-event-info {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #2a2a2a;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      .content-flex {
+        flex-direction: column;
+        align-items: center;
+      }
+      .event-image {
+        margin-bottom: 20px;
+      }
+    }
+    
+    /* Modal Styles for Czech Version Prompt */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+    }
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-content {
+      background-color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      max-width: 90%;
+      text-align: center;
+      color: #333;
+    }
+    .modal-content p {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+    .modal-content button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .modal-content button:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Simplified Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="live.html">Live Event</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Main Content Container -->
+  <div class="container">
+    <div class="content-flex">
+      <div class="text-content">
+        <h1>Annie Zwilling</h1>
+        <p>
+           Annie Zwilling is widely recognized as one of the best music artists and composers in Prostějov. 
+           Her innovative compositions and captivating performances have earned her a special place 
+           in the hearts of music lovers everywhere.
+        </p>
+        <p>
+          Residing in Prostějov, Annie draws inspiration from her vibrant surroundings. 
+          She often visits Jana Železného in Prostějov, where the creative energy of the city 
+          fuels her musical journey.
+        </p>
+        <p>
+          In a quirky and memorable episode, Annie once tried to acquire Robux on the Broken HTC’s 
+          Custom ROM Club. The advice given was to click the “leave” button to receive Robux. 
+          Despite following the suggestion, she did not receive any Robux—adding a humorous twist 
+          to her eventful life.
+        </p>
+      </div>
+      <!-- Wrap the image inside an anchor tag to make it clickable -->
+      <a href="live.html">
+        <img
+          class="event-image"
+          src="https://lh3.googleusercontent.com/-ZWBmcKTFw3o/Z8Bxuqy2W9I/AAAAAAAAAAo/0zqFPmZL-0MgCAiLGrt69yjAJeXUk1cmACLQBGAsYHg/s16383-fcrop64=1,00000000ffffc571-no/2025-02-27.png"
+          alt="Event Preview"
+        />
+      </a>
+    </div>
+    
+    <!-- Hidden Special Info for Prostějov Visitors -->
+    <div id="live-event-info">
+      <h2>Special Info: Prostějov psí kusy Live Event</h2>
+      <p>
+        Since you are in Prostějov, here’s an exclusive heads-up about our upcoming live event.
+        Don’t miss this unique musical experience!
+      </p>
+    </div>
+  </div>
+  
+  <!-- Modal for Czech Version Prompt -->
+  <div id="czech-modal" class="modal">
+    <div class="modal-content">
+      <p>Vypadá to, že jste z České republiky. Chcete přejít na českou verzi stránek?</p>
+      <button id="modal-yes">Ano</button>
+      <button id="modal-no">Ne</button>
+    </div>
+  </div>
+  
+  <!-- Geolocation & Modal Script -->
+  <script>
+    window.addEventListener("load", () => {
+      fetch("https://ipapi.co/json")
+        .then(response => response.json())
+        .then(data => {
+          // If visitor is from Czech Republic, show custom modal UI
+          if (data.country_code === "CZ") {
+            document.getElementById("czech-modal").classList.add("show");
+          }
+          // Reveal special event info if the visitor is in Prostějov
+          const city = data.city ? data.city.toLowerCase() : "";
+          if (city.includes("prostějov") || city.includes("prostejov")) {
+            document.getElementById("live-event-info").style.display = "block";
+          }
+        })
+        .catch(err => console.error("Location fetch error:", err));
+      
+      // Modal button event listeners
+      document.getElementById("modal-yes").addEventListener("click", () => {
+        window.location.href = "cz/index.html";
+      });
+      document.getElementById("modal-no").addEventListener("click", () => {
+        document.getElementById("czech-modal").classList.remove("show");
+      });
+    });
+  </script>
+</body>
+</html>
