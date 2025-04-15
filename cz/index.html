@@ -1,222 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <title>Annie Zwilling - Officiální Stránka</title>
+  <title>Annie Zwilling - Oficiální Stránka</title>
   <style>
-    /* Reset and Base Styles */
+    /* Base Reset & Typography */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #F7F8FA;
+      color: #333;
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+    /* Dark mode overrides */
+    body.dark-mode {
       background-color: #1e1e1e;
       color: #f0f0f0;
     }
     
-    /* Navigation Bar */
+    /* Navigation Bar with Theme Toggle Button */
     nav {
-      background-color: #222;
-      padding: 0 20px;
-      height: 60px;
+      background-color: #ffffff;
+      padding: 0 30px;
       display: flex;
       align-items: center;
+      height: 70px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      justify-content: space-between;
+      transition: background-color 0.4s ease;
+    }
+    body.dark-mode nav {
+      background-color: #222;
     }
     nav ul {
       list-style: none;
       display: flex;
-      gap: 20px;
+      gap: 30px;
     }
     nav li a {
-      color: #ddd;
+      color: #555;
       text-decoration: none;
-      transition: color 0.3s ease;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 8px;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+      border-bottom: 2px solid transparent;
     }
-    nav li a:hover {
+    body.dark-mode nav li a {
+      color: #ccc;
+    }
+    nav li a:hover,
+    nav li a:focus {
+      color: #1E90FF;
+      border-bottom: 2px solid #1E90FF;
+    }
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background-color: #1E90FF;
       color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      background-color: #00BFFF;
     }
     
-    /* Main Container with Fade-In Animation */
+    /* Main Content Container */
     .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      animation: fadeIn 1s ease forwards;
-      opacity: 0;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      animation: fadeInUp 0.8s ease-out;
     }
-    @keyframes fadeIn {
-      from {
+    @keyframes fadeInUp {
+      0% {
         opacity: 0;
         transform: translateY(20px);
       }
-      to {
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
     
-    /* Flex Layout for Text and Image Side-by-Side */
+    /* Two-Column Layout for Main Content */
     .content-flex {
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      gap: 40px;
       flex-wrap: wrap;
     }
     .text-content {
       flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+    .text-content h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #1E90FF;
+    }
+    .text-content p {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #555;
+    }
+    body.dark-mode .text-content p {
+      color: #ccc;
     }
     
-    /* Image Styling: Square (with a little extra width), Rounded Edges, Hover Scale */
-    .event-image {
-      width: 310px; /* Increased width by 10px */
-      height: 300px;
+    /* Call-to-Action Button */
+    .fresh-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #1E90FF, #00BFFF);
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .fresh-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(30,144,255,0.2);
+    }
+    .fresh-button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 12px rgba(30,144,255,0.15);
+    }
+    
+    /* Image Styling */
+    .image-container {
+      flex: 1;
+      text-align: center;
+      min-width: 280px;
+    }
+    .image-container img {
+      width: 300px;       /* Fixed width */
+      height: 200px;      /* Fixed rectangular shape */
       object-fit: cover;
+      object-position: 50% 0%; /* Centered horizontally; content shifted upward */
       border-radius: 12px;
-      border: 2px solid #333;
-      transition: transform 0.3s ease;
-    }
-    .event-image:hover {
-      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
-    /* Special Info Section for Prostějov Visitors */
-    #live-event-info {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #2a2a2a;
-      border-radius: 8px;
-      display: none;
-    }
-    
-    /* Responsive Adjustments */
-    @media (max-width: 600px) {
+    /* Responsive Adjustments for Small Screens */
+    @media (max-width: 768px) {
       .content-flex {
         flex-direction: column;
-        align-items: center;
+        text-align: center;
       }
-      .event-image {
-        margin-bottom: 20px;
+      .text-content h1 {
+        font-size: 36px;
       }
-    }
-    
-    /* Modal Styles for Czech Version Prompt */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 1000;
-    }
-    .modal.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    .modal-content {
-      background-color: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      max-width: 90%;
-      text-align: center;
-      color: #333;
-    }
-    .modal-content p {
-      margin-bottom: 20px;
-      font-size: 16px;
-    }
-    .modal-content button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 14px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .modal-content button:hover {
-      background-color: #ddd;
+      .fresh-button {
+        width: 100%;
+        max-width: 300px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Simplified Navigation Bar -->
+  <!-- Navigation Bar with Theme Toggle Button -->
   <nav>
     <ul>
       <li><a href="index.html">Domov</a></li>
-      <li><a href="live.html">Živý Event</a></li>
       <li><a href="museum.html">Muzeum</a></li>
       <li><a href="muzika.html">Muzika</a></li>
     </ul>
+    <button class="theme-toggle" id="theme-toggle">Tmavý režim</button>
   </nav>
   
   <!-- Main Content Container -->
   <div class="container">
     <div class="content-flex">
+      <!-- Text Content Column -->
       <div class="text-content">
         <h1>Annie Zwilling</h1>
         <p>
-           Annie Zwilling je všeobecně uznávána jako jedna z nejlepších prostějovských hudebních umělkyň a skladatelek. 
-           Její inovativní kompozice a strhující výkony jí vynesly zvláštní místo 
-           v srdcích všech milovníků hudby.
+          Annie Zwilling je všeobecně uznávaná jako jedna z nejlepších prostějovských hudebních umělkyň a skladatelek. Její inovativní kompozice a strhující výkony jí vynesly zvláštní místo v srdcích všech milovníků hudby.
         </p>
         <p>
-          Annie bydlí v Prostějově a čerpá inspiraci ze svého živého okolí. 
-          Jana Železného často navštěvuje v Prostějově, kde je kreativní energie města 
-          podněcuje její hudební cestu.
+          Annie bydlí v Prostějově a čerpá inspiraci ze svého živého okolí. Často navštěvuje Janu Železného, kde jí kreativní energie města podněcuje hudební cestu.
         </p>
         <p>
-          V nepředvídatelné a nezapomenutelné epizodě se Annie jednou pokusila získat Robuxy na Broken HTC's 
-          Vlastní ROM Club. Doporučená rada byla kliknout na tlačítko „opustit“ a získat Robuxy. 
-          Navzdory tomu, že návrh přijala, nedostala žádné Robuxy – přidala k tomu vtipný zvrat 
-          do jejího pohnutého života.
+          V jedné nezapomenutelné epizodě se Annie pokusila získat Robuxy na Broken HTC's Vlastní ROM Club – rada byla kliknout na tlačítko „opustit“, ale navzdory tomu nedostala žádné Robuxy, což přidalo do jejího života vtipný zvrat.
         </p>
+        <!-- Call-to-Action Button -->
+        <button class="fresh-button" onclick="window.location.href='muzika.html'">
+          Prozkoumej galerii hudby
+        </button>
       </div>
-      <!-- Wrap the image inside an anchor tag to make it clickable -->
-      <a href="live.html">
-        <img
-          class="event-image"
-          src="https://lh3.googleusercontent.com/-ZWBmcKTFw3o/Z8Bxuqy2W9I/AAAAAAAAAAo/0zqFPmZL-0MgCAiLGrt69yjAJeXUk1cmACLQBGAsYHg/s16383-fcrop64=1,00000000ffffc571-no/2025-02-27.png"
-          alt="Event Preview"
-        />
-      </a>
-    </div>
-    
-    <!-- Hidden Special Info for Prostějov Visitors -->
-    <div id="live-event-info">
-      <h2>Special Info: Prostějov psí kusy Live Event</h2>
-      <p>
-        Protože jste v Prostějově, zde je exkluzivní heads-up o naší nadcházející živé akci.
-        Nenechte si ujít tento jedinečný hudební zážitek!
-      </p>
+      
+      <!-- Image Column placed below text on smaller screens -->
+      <div class="image-container">
+        <img src="https://i.ibb.co/JW4nWdZg/Whats-App-Image-2025-02-27-at-16-07-10-02fafd97.jpg" alt="Náhled Eventu">
+      </div>
     </div>
   </div>
   
-  
-  <!-- Geolocation & Modal Script -->
+  <!-- Script for Theme Toggle -->
   <script>
-    window.addEventListener("load", () => {
-      fetch("https://ipapi.co/json")
-        .then(response => response.json())
-        .then(data => {
-          // Reveal special event info if the visitor is in Prostějov
-          const city = data.city ? data.city.toLowerCase() : "";
-          if (city.includes("prostějov") || city.includes("prostejov")) {
-            document.getElementById("live-event-info").style.display = "block";
-          }
-        })
-        .catch(err => console.error("Location fetch error:", err));
-      });
+    const themeToggleButton = document.getElementById('theme-toggle');
+    themeToggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      // Update button text based on current theme
+      if(document.body.classList.contains('dark-mode')) {
+        themeToggleButton.textContent = 'Světlý režim';
+      } else {
+        themeToggleButton.textContent = 'Tmavý režim';
+      }
     });
   </script>
 </body>
